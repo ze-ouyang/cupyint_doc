@@ -7,6 +7,6 @@ Overview
 
 1. high dimensional integration  
 2. fast & parallel computation on GPU  
-2. vectorized integration incorporating with broadcasting mechanism
-3. complicated integration boundaries
-4. tunable sampling points per dimension
+3. vectorized integration incorporating with broadcasting mechanism  
+4. complicated integration boundaries  
+5. tunable sampling points per dimension  
