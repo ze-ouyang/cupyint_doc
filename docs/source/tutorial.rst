@@ -45,6 +45,7 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
 * Boundary function: Other than the usual hyper-cubic integral limitations, we might meet cases in which integral limitations are functions of variables, i.e. :math:`x_1^2+x_2^2+x_3^2<1`. In the case here, we don't have a special boundary and we can input "None" instead.  
 
 .. code-block:: python
+
   import cupy
   import cupyint
   data_type=cp.float32
