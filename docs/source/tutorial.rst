@@ -28,5 +28,5 @@ Trapezoidal integration
 Trapezoidal integration is based on linear interpolation, which divides the integration interval into small trapezoids and approximates the definite integral by summing their areas. It is suitable for continuous functions and simple to implement, but provides low accuracy. For example, for 1D integration of :math:`f(x)`, we have the trapezoidal integration :math:`I` given by
 
 .. math::
-   I=\frac{\Delta x}{x} \big(f(x_0)+2\Sum_{i=1}^{n-1}f(x_i)+f(x_n) \big)
+   I=\frac{\Delta x}{x} \big(f(x_0)+2\sum_{i=1}^{n-1}f(x_i)+f(x_n) \big)
 
