@@ -3,7 +3,7 @@ Tutorial
 
 Overview
 --------
-**cupyint** is tailored to perform numerical integration based on `CuPy <https://cupy.dev/>`_, with highlighs in
+**cupyint** is a Python package tailored to perform numerical integration based on `CuPy <https://cupy.dev/>`_, with highlighs in
 
 * high dimensional integration  
 * fast & parallel computation on GPU  
