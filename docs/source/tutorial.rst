@@ -36,6 +36,7 @@ where :math:`x_0, x_1,...,x_n` are equally spaced points. This method is determi
 In this section, we provide 2 examples on utilizing trapezoidal integration method with **cupyint**.  
 
 Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)`. Generally, we need to define 6 quantities, listed as: data precision format, integrand, parameters, integral bounds, number of sampling points, and boundary function.  
+
 * data precision format: this set whether data is in float32 or float64. The former uses less memory but provides less accuracy. Here we will use float64.  
 * integrand: function to be integrated. Here it is :math:`f(x)=\mathrm{sin}(x)`.  
 * parameters: Parameters are with the integrand but we don't have parameters in this case. However, this is a general interface in **cupyint**, we can set this as :math:`1` in the integrand.  
