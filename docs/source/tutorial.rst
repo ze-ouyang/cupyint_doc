@@ -15,7 +15,7 @@ Overview
 
 In the following sections, examples are provided with each integration method:
 
-1. ref:`梯形积分 <trapezoidal>`  
+1. Trapezoidal integration  
 2. Simpson's integration  
 3. Boole's integration  
 4. Gaussian quadrature  
@@ -71,17 +71,6 @@ The output of the program is:
 .. code-block:: python  
 
   integral_value: 0.4595915675
-
-.. _trapezoidal:
-
-Trapezoidal integration
-------------------------
-
-这是关于梯形积分的内容。
-
-在其他地方引用：
-
-请参考 :ref:`梯形积分 <trapezoidal>`。
 
 
 
