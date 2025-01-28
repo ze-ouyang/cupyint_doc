@@ -1,4 +1,4 @@
-Welcome to cupyint's documentation!
+CuPyInt Documentation!
 ===================================
 
 **cupyint** is a CuPy-based library for numerical integration.
