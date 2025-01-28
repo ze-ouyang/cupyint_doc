@@ -25,7 +25,6 @@ In the following sections, theories and examples are provided with each integrat
 Trapezoidal integration
 --------
 
-Theory:
-~~~~~~
+* Theory  
 Trapezoidal integration is based on linear interpolation, which divides the integration interval into small trapezoids and approximates the definite integral by summing their areas. It is suitable for continuous functions and simple to implement, but provides low accuracy.
 
