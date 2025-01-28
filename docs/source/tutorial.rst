@@ -10,4 +10,5 @@ Overview
 3. vectorized integration incorporating with broadcasting mechanism  
 4. complicated integration boundaries  
 5. tunable sampling points per dimension  
-6. user-friendly interface
+6. multiple integration methods, including deterministic & Stochastic ones  
+7. user-friendly interface  
