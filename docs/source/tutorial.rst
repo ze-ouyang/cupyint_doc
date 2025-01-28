@@ -15,7 +15,7 @@ Overview
 
 In the following sections, examples are provided with each integration method:
 
-1. Trapezoidal integration  ref:`Trapezoidal integration`
+1. :ref:`Trapezoidal integration <trap integration label>`  
 2. Simpson's integration  
 3. Boole's integration  
 4. Gaussian quadrature  
@@ -24,7 +24,7 @@ In the following sections, examples are provided with each integration method:
 
 Generally, all methods share same interface, baring minor difference.
 
-Trapezoidal integration .. _Trapezoidal integration:
+Trapezoidal integration .. _trap integration label:
 --------
  
 Trapezoidal integration is based on linear interpolation, which divides the integration interval into small trapezoids and approximates the definite integral by summing their areas. It is suitable for continuous functions and simple to implement, but provides low accuracy. For example, for 1D integration of :math:`f(x)`, we have the trapezoidal integration :math:`I` given by
