@@ -63,8 +63,7 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
   bound = [[0, 1]] # This sets integral limitation as (0,1).
   num_point = [20] # This sets number of sampling points per dimension. 
   integral_value = cupyint.trapz_integrate(function, params, bound, num_point, boundaries=None) #We use trapz_integrate function
-  print(integral_value)
- 
+  print(f"integral_value: {integral_value.item():.10f}") # Convert to Python float 
 
 
 
