@@ -35,9 +35,12 @@ Trapezoidal integration is based on linear interpolation, which divides the inte
 
 where :math:`x_0, x_1,...,x_n` are equally spaced points. This method is determininstic, suitable for linear functions, and accepts arbitrary number of points (odd or even) per dimension. The truncation eeror for this method is :math:`\mathcal{O}(\Delta x^2)`.
 
-In this section, we provide 2 examples on utilizing trapezoidal integration method with **cupyint**.  
+In this section, we provide 2 examples on utilizing trapezoidal integration method with **cupyint**. The general integration function is 
+.. code-block:: python
 
-Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)`. Generally, we need to define 6 quantities, listed as: data precision format, integrand, parameters, integral bounds, number of sampling points, and boundary function before calculating the integral value.  
+  cupyint.trapz_integrate(function, params, bounds, num_points, boundaries)
+
+Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)`. We need to define 6 quantities as indicated by , listed as: data precision format, integrand, parameters, integral bounds, number of sampling points, and boundary function before calculating the integral value.  
 
 * Data precision format: this set whether data is in float32 or float64. The former uses less memory but provides less accuracy. Here we will use float32.  
 * Integrand: function to be integrated. Here it is :math:`f(x)=\mathrm{sin}(x)`.  
