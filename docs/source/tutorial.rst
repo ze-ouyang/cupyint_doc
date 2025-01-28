@@ -46,10 +46,11 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
 
 .. code-block:: python
 
-  import cupy
+  import cupy #required package for cupyint
   import cupyint
+
   data_type=cp.float32
-  cupyint.set_backend(data_type)
+  cupyint.set_backend(data_type) #this sets single precision data type in the backend
  
 
 
