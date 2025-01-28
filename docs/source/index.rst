@@ -1,7 +1,8 @@
 cupyint Documentation!
 ===================================
 
-**cupyint** is an open-source and CuPy-based library for numerical integration.
+**cupyint** is a CuPy-based library for numerical integration.  
+**cupyint** is open-source, see [https://github.com/ze-ouyang/cupyint](https://github.com/ze-ouyang/cupyint).
 
 
 Check out the :doc:`usage` section for further information, including
