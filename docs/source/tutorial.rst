@@ -15,7 +15,7 @@ Overview
 
 In the following sections, examples are provided with each integration method:
 
-1. ref:`Trapezoidal integration <trapez integration>`    
+1. ref:`梯形积分 <trapezoidal>`  
 2. Simpson's integration  
 3. Boole's integration  
 4. Gaussian quadrature  
