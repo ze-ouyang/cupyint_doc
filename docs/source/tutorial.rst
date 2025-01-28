@@ -24,3 +24,6 @@ In the following sections, theories and examples are provided with each integrat
 
 Trapezoidal integration
 --------
+
+Theory:
+~~~~~~
