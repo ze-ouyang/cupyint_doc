@@ -31,6 +31,6 @@ Trapezoidal integration is based on linear interpolation, which divides the inte
 
    I = \frac{\Delta x}{2} \left( f(x_0) + 2\sum_{i=1}^{n-1} f(x_i) + f(x_n) \right)
 
-where :math:`x_0, x_1,...,x_n` are equally spaced point. This method is determininstic, more suitable for linear functions, and accepts arbitrary points (odd or even) per dimension. The truncation eeror for the method is :math:`\mathcal{O}(\Delta x^2)`.
+where :math:`x_0, x_1,...,x_n` are equally spaced point. This method is determininstic, suitable for linear functions, and accepts arbitrary points (odd or even) per dimension. The truncation eeror for the method is :math:`\mathcal{O}(\Delta x^2)`.
 
 
