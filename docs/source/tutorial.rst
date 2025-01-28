@@ -20,7 +20,7 @@ In the following sections, theories and examples are provided with each integrat
 3. Boole's integration  
 4. Gaussian quadrature  
 5. Monte Carlo integration  
-6. Importance sampling Monte Carlo integration  
+6. Importance-sampling Monte Carlo integration  
 
 Trapezoidal integration
 --------
