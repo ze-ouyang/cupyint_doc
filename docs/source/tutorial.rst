@@ -60,7 +60,7 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
   params = cp.asarray([[1]], dtype=data_type) # We only accept 2D parameters in cp.array form. Please pay special attention.
   bound = [[0, 1]] # This sets integral limitation as (0,1).
   num_point = [20] # This sets number of sampling points per dimension. 
-  integral_value = cupyint.trapz_integrate(function, params, bound, num_point, None) #We use trapz_integrate function
+  integral_value = cupyint.trapz_integrate(function, params, bound, num_point, boundaries=None) #We use trapz_integrate function
   print(integral_value)
  
 
