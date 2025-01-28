@@ -15,7 +15,7 @@ Overview
 
 In the following sections, examples are provided with each integration method:
 
-1. :ref:`Trapezoidal integration <trap integration label>`  
+1. Trapezoidal integration  ref:`trap integration label`    
 2. Simpson's integration  
 3. Boole's integration  
 4. Gaussian quadrature  
