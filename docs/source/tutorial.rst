@@ -3,7 +3,7 @@ Tutorial
 
 Overview
 --------
-**cupyint** is a Python package tailored to perform numerical integration based on `CuPy <https://cupy.dev/>`_, with highlighs in
+**cupyint** is a Python package tailored to perform numerical integration based on `CuPy <https://cupy.dev/>`_, with highlights in
 
 * high dimensional integration  
 * fast & parallel computation on GPU  
@@ -33,6 +33,7 @@ Trapezoidal integration is based on linear interpolation, which divides the inte
 
 where :math:`x_0, x_1,...,x_n` are equally spaced points. This method is determininstic, suitable for linear functions, and accepts arbitrary number of points (odd or even) per dimension. The truncation eeror for this method is :math:`\mathcal{O}(\Delta x^2)`.
 
-In this section, we provide 2 examples on uitilizing trapezoidal integration method with **cupyint**.
+In this section, we provide 2 examples on utilizing trapezoidal integration method with **cupyint**.
+Our first example is to integrate :math:`f(x)=sin(x)` over :math:`(0,1)`. Generally, we need to define  
 
 
