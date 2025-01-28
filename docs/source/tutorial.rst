@@ -34,6 +34,6 @@ Trapezoidal integration is based on linear interpolation, which divides the inte
 where :math:`x_0, x_1,...,x_n` are equally spaced points. This method is determininstic, suitable for linear functions, and accepts arbitrary number of points (odd or even) per dimension. The truncation eeror for this method is :math:`\mathcal{O}(\Delta x^2)`.
 
 In this section, we provide 2 examples on utilizing trapezoidal integration method with **cupyint**.
-Our first example is to integrate :math:`f(x)=sin(x)` over :math:`(0,1)`. Generally, we need to define  
+Our first example is to integrate :math:`f(x)=\sin(x)` over :math:`(0,1)`. Generally, we need to define 
 
 
