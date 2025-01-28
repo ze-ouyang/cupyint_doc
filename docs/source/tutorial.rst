@@ -12,3 +12,5 @@ Overview
 5. tunable sampling points per dimension  
 6. multiple integration methods, including deterministic & stochastic ones  
 7. user-friendly interface  
+
+In the following sections, we will go to
