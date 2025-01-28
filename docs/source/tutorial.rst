@@ -72,6 +72,7 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
 The output of the program is:
 
 .. code-block:: python
+
   integral_value: 0.4595915675
 
 
