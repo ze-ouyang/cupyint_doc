@@ -37,6 +37,7 @@ Trapezoidal integration is based on linear interpolation, which divides the inte
 where :math:`x_0, x_1,...,x_n` are equally spaced points. This method is determininstic, suitable for linear functions, and accepts arbitrary number of points (odd or even) per dimension. The truncation eeror for this method is :math:`\mathcal{O}(\Delta x^2)`.
 
 In this section, we provide 2 examples on utilizing trapezoidal integration method with **cupyint**. The general integration function is 
+
 .. code-block:: python
 
   cupyint.trapz_integrate(function, params, bounds, num_points, boundaries)
