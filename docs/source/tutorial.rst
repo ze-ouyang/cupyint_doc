@@ -72,6 +72,16 @@ The output of the program is:
 
   integral_value: 0.4595915675
 
+.. _trapezoidal:
+
+Trapezoidal integration
+------------------------
+
+这是关于梯形积分的内容。
+
+在其他地方引用：
+
+请参考 :ref:`梯形积分 <trapezoidal>`。
 
 
 
