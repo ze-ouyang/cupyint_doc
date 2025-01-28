@@ -1,10 +1,8 @@
-CuPyInt Documentation!
+cupyint Documentation!
 ===================================
 
-**cupyint** is a CuPy-based library for numerical integration.
+**cupyint** is an open-source and CuPy-based library for numerical integration.
 
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
