@@ -53,8 +53,8 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
   cupyint.set_backend(data_type) #this sets single precision data type in the backend
 
   def function(x,params):
-    #This depends on how many parameters we have for the integrand. For the case here, we will set params to 1 later. 
-    #However, "params" is necessary in defining integrand.
+    #"params" is necessary in defining integrand.
+    #However, this depends on how many parameters we have for the integrand. For the case here, we will set "params" to 1 later.
     return cp.sin(x)*params[0]
 
  
