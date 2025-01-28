@@ -22,6 +22,8 @@ In the following sections, examples are provided with each integration method:
 5. Monte Carlo integration  
 6. Importance-sampling Monte Carlo integration  
 
+Generally, all methods share same interface, baring minor difference.
+
 Trapezoidal integration
 --------
  
