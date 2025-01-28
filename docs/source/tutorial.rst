@@ -15,7 +15,7 @@ Overview
 
 In the following sections, examples are provided with each integration method:
 
-1. Trapezoidal integration  ref:`trapezoidal-integration`  
+1. ref:`Trapezoidal integration <trape integration>`    
 2. Simpson's integration  
 3. Boole's integration  
 4. Gaussian quadrature  
@@ -24,6 +24,7 @@ In the following sections, examples are provided with each integration method:
 
 Generally, all methods share same interface, baring minor difference.
 
+.. _trape integration:
 Trapezoidal integration
 --------
  
