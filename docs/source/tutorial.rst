@@ -13,7 +13,7 @@ Overview
 * multiple integration methods, including deterministic & stochastic ones  
 * user-friendly interface  
 
-In the following sections, examples are provided with each integration method.
+In the following sections, examples are provided with each integration method:
 
 1. Trapezoidal integration  
 2. Simpson's integration  
