@@ -150,9 +150,9 @@ Simpson's integration is based on quadratic interpolation. It divides the integr
 
    I = \frac{\Delta x}{3} \left( f(x_0) + 4\sum_{i=1,3,5}^{n-1} f(x_i) + 2\sum_{i=2,4,6}^{n-2} f(x_i) + f(x_n) \right)
 
-where :math:`x_0, x_1,...,x_n` are equally spaced points. This method is determininstic, suitable for smooth functions, and accepts odd number of points per dimension. The truncation error for this method is :math:`\mathcal{O}(\Delta x^4)`. 
+where :math:`x_0, x_1,...,x_n` are equally spaced points. This method is determininstic, suitable for smooth functions, and accepts odd number of points per dimension. The truncation error for this method is :math:`\mathcal{O}(\Delta x^4)`, about 2 orders of magnitude higher than that of trapezoidal integration. 
 
-In this section, 
+In this section, we still provide 2 examples, which calculate the same integral as we did in the Trapzoidal integration section, but codes are different (obviously).
 
 
 Boole's integration
