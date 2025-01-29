@@ -357,7 +357,12 @@ Again, we see an improvement on the accuracy when doubling the grids.
 Gaussian quadrature
 --------
 
-Gaussian Quadrature is an efficient numerical integration method that uses the roots of orthogonal polynomials (such as Legendre polynomials) as integration points. It approximates the integral by a weighted sum of function values at these points, achieving high accuracy with relatively few points, especially for smooth functions. In this method, we choose the Legendre polynomials as the orthogonal polynomials. The theory of this method is a little more complicated as of now.
+Gaussian Quadrature is an efficient numerical integration method that uses the roots of orthogonal polynomials (such as Legendre polynomials) as integration points. It approximates the integral by a weighted sum of function values at these points, achieving high accuracy with relatively few points, especially for smooth functions. In this method, we choose the Legendre polynomials as the orthogonal polynomials. The theory of this method is a little more complicated as of now. We start with the standard interval :math:`(-1,1)`, and obtained 
+
+.. math::
+
+  \int_{-1}^1 f(x) \approx =\sum_{i=1}^n w_i f(x_i)
+
 
 
 
