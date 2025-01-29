@@ -357,9 +357,9 @@ where :math:`x_i` are the nodes, or roots of the :math:`n` th degree Legendre po
 
 .. math::
 
-  I = \int_{a}^b f(x) \mathrm d x \approx  \frac{b-a}{2} \sum_{i=1}^n w_i f(\frac{b-a}{2}x_i+\frac{a+b}{2})
+  I = \int_{a}^b f(x) \mathrm d x \approx  \frac{b-a}{2} \sum_{i=1}^n w_i f\left(\frac{b-a}{2}x_i+\frac{a+b}{2}\right)
 
-
+Above is the case for 1D integral of function :math:`f(x)` over domain :math:`(a,b)`.
 
 
 
