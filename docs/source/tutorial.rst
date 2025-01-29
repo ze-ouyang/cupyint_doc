@@ -144,7 +144,15 @@ Actually, **cupyint** is capable of handling multiple paramaters, and can automa
 Simpson's integration
 --------
 
+Simpson's integration is based on quadratic interpolation. It divides the integration interval into an even number of subintervals, fits parabolas to the function, and approximates the definite integral by summing the areas under the parabolas. It offers higher accuracy than the trapezoidal integration at the cost of slightly higher computation complexity. For example, for 1D integration of :math:`f(x)`, we have the Simpson's integration :math:`I` given by 
 
+.. math::
+
+   I = \frac{\Delta x}{3} \left( f(x_0) + 4\sum_{i=1,3,5}^{n-1} f(x_i) + 2\sum_{i=2,4,6}^{n-2} f(x_i) + f(x_n) \right)
+
+where :math:`x_0, x_1,...,x_n` are equally spaced points. This method is determininstic, suitable for smooth functions, and accepts odd number of points per dimension. The truncation error for this method is :math:`\mathcal{O}(\Delta x^4)`. 
+
+In this section, 
 
 
 Boole's integration
