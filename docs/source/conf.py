@@ -7,7 +7,7 @@ copyright = '2025, Ze Ouyang'
 author = 'Ze Ouyang'
 
 release = '0.1'
-version = '0.1.5'
+version = '0.1.6'
 
 # -- General configuration
 
