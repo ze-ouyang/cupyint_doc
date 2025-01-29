@@ -76,6 +76,8 @@ The output of the program is:
   analytical value: 0.4596976941
   relative error: 0.0230861753%
 
+To estimate the error in this case, we compare the integral value with analytical one, obatained a relative error of :math:`0.02%` with 20 segments in the integral domain. In general case, to estimate the error, we encourage users to refine the grids.
+
 
 
 
