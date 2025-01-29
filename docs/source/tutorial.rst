@@ -115,7 +115,7 @@ Our second example is a more complicated one, as we will try to integrate :math:
   print(f"length of integral value: {integral_value.size}") # Output length of the integral value
 
   # To estimate error, we double the grids in all three dimension, and output the relative error.
-  num_point = [40, 40, 40] # This sets number of sampling points per dimension.
+  num_point = [40, 40, 40] # This sets number of sampling points per dimension, which are doubled
   integral_value2 = cupyint.trapz_integrate(function, param_values, bound, num_point, boundary) #We use trapz_integrate function
   relative_error = cp.abs(integral_value-integral_value2)/integral_value # relative error
 
