@@ -24,7 +24,6 @@ In the following sections, examples are provided with each integration method:
 
 Generally, all methods share same interface, baring minor difference.
 
-.. _trapez integration:
 Trapezoidal integration
 --------
  
@@ -38,14 +37,14 @@ where :math:`x_0, x_1,...,x_n` are equally spaced points. This method is determi
 
 In this section, we provide 2 examples on utilizing trapezoidal integration method with **cupyint**. The trapezoidal integration function is ``cupyint.trapz_integrate(function, params, bounds, num_points, boundaries)``.
 
-Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)`. We need to define 6 quantities as indicated by , listed as: data precision format, integrand, parameters, integral bounds, number of sampling points, and boundary function before calculating the integral value.  
+Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)`. We need to define 6 quantities as indicated by ``cupyint.trapz_integrate(function, params, bounds, num_points, boundaries)``, listed as: data precision format, integrand, parameters, integral bounds, number of sampling points, and boundary function before calculating the integral value.  
 
 * Data precision format: this sets whether data is in float32 or float64. The former uses less memory but provides less accuracy. Here we will use float32.  
 * Integrand: function to be integrated. Here it is :math:`f(x)=\mathrm{sin}(x)`.  
-* Parameters: Parameters are with the integrand but we don't have parameters in this case. However, this is a general interface in **cupyint**, we can set this as :math:`1` in the integrand.  
+* Parameters: Parameters go with the integrand but we don't have parameters in this case, so we input "None" in the "params" position.   
 * Integral bounds: This is the integral limitation. In this example we set it as :math:`(0,1)`.  
 * Number of sampling points: This defines number of spaced points we have in each dimension. In this example we set it as :math:`20`.  
-* Boundary function: Other than the usual hyper-cubic integral limitations, we might meet cases in which integral limitations are functions of variables, i.e. :math:`x_1^2+x_2^2+x_3^2<1`. In the case here, we don't have a special boundary and we can input "None" instead.  
+* Boundary function: Other than the usual hyper-cubic integral limitations, we might meet cases in which integral limitations are functions of variables, i.e. :math:`x_1^2+x_2^2+x_3^2<1`. In the case here, we don't have a special boundary and we can input "None" in its position instead.  
 
 .. code-block:: python
 
