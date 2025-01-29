@@ -121,5 +121,5 @@ The output of the program is
   integral value: [0.19233355 0.19240522 0.1924768  ... 0.73139507 0.7314593  0.7315235 ]
   length of integral value: 10000
 
-Actually, **cupyint** is capable of handling multiple paramaters, and can automatically vectorized the integrand to perform faster calculation. The output ``integral_value`` should have the same length of the input ``param`` length, corresponding to the parameter sets.
+Actually, **cupyint** is capable of handling multiple paramaters, and can automatically vectorized the integrand to perform faster calculation. The output ``integral_value`` should have the same length of the input ``param`` length, corresponding to various parameter sets.
 
