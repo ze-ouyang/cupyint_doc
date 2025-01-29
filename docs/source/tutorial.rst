@@ -23,7 +23,7 @@ In the following sections, examples are provided with each integration method, w
 5. Monte Carlo integration  
 6. Importance-sampling Monte Carlo integration  
 
-Generally, all methods share almost same interface, with minor difference in some cases.
+Generally, all methods share almost same interface, with minor difference in Method 5 & 6.
 
 Trapezoidal integration
 --------
@@ -34,7 +34,7 @@ Trapezoidal integration is based on linear interpolation, which divides the inte
 
    I = \frac{\Delta x}{2} \left( f(x_0) + 2\sum_{i=1}^{n-1} f(x_i) + f(x_n) \right)
 
-where :math:`x_0, x_1,...,x_n` are equally spaced points. This method is determininstic, suitable for linear functions, and accepts arbitrary number of points (odd or even) per dimension. The truncation eeror for this method is :math:`\mathcal{O}(\Delta x^2)`.
+where :math:`x_0, x_1,...,x_n` are equally spaced points. This method is determininstic, suitable for linear functions, and accepts arbitrary number of points (odd or even) per dimension. The truncation error for this method is :math:`\mathcal{O}(\Delta x^2)`.
 
 In this section, we provide 2 examples on utilizing trapezoidal integration method with **cupyint**. The trapezoidal integration function is ``cupyint.trapz_integrate(function, params, bounds, num_points, boundaries)``.
 
@@ -135,6 +135,27 @@ Actually, **cupyint** is capable of handling multiple paramaters, and can automa
   >>> relative error: [0.00618441 0.00618374 0.00618314 ... 0.00984942 0.00984945 0.0098494 ]
 
 
+Simpson's integration
+--------
+
+
+
+
+Boole's integration
+--------
+
+
+
+Gaussian quadrature
+--------
+
+
+Monte Carlo integration
+--------
+
+
+Importance-sampling Monte Carlo integration  
+--------
 
 
 
