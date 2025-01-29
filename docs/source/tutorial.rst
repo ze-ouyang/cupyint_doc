@@ -567,9 +567,16 @@ Importance Sampling Monte Carlo Integration is an improved Monte Carlo method th
 
 .. math::
 
-  I \approx \int f(x)\mathrm d x
+  I = \int_a^b f(x)\mathrm d x
 
-We first introduce a normalized importance distribution :math:`p(x)` such that :math:`p(x)>0`. The integral
+We first introduce a normalized importance distribution :math:`p(x)` such that :math:`p(x)>0`. The integral can be rewritten as 
+
+.. math::
+
+  I = \int_a^b \frac{f(x)}{p(x)}p(x)  \mathrm d x \approx \frac{1}{n}\sum_{i=1}^n \frac{f(x_i)}{p(x_i)}
+
+
+
 
 
 
