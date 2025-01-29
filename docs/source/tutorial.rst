@@ -249,7 +249,7 @@ Boole's integration is derived from Newton-Cotes formulas with fourth-order poly
 
 .. math::
 
-   I &= \frac{2\Delta x}{45} \left( 7f(x_i) + 32\sum_{i=1,5,9,...}^{4N-3} f(x_i) + 12\sum_{i=2,6,10,...}^{4N-2} f(x_i) + 32\sum_{i=3,7,11,...}^{4N-1} f(x_i) \\ &+ 14\sum_{i=4,8,12,...}^{4N-4} f(x_i) + 7f(x_{n}) \right)
+   I = \frac{2\Delta x}{45} \left( 7f(x_i) + 32\sum_{i=1,5,9,...}^{4N-3} f(x_i) + 12\sum_{i=2,6,10,...}^{4N-2} f(x_i) + 32\sum_{i=3,7,11,...}^{4N-1} f(x_i) + 14\sum_{i=4,8,12,...}^{4N-4} f(x_i) + 7f(x_{n}) \right)
 
 where :math:`x_0, x_1,...,x_n` are equally spaced points, :math:`\Delta x=x_i-x_{i-1}`, and :math:`N` is an integer. This method is determininstic, suitable for smooth functions, and accepts :math:`4N+1` number of points per dimension, where :math:`N` is an integer. The truncation error for this method is :math:`\mathcal{O}(\Delta x^6)`.
 
@@ -326,7 +326,7 @@ The code for the second example is given below
     
     # To estimate error, we double the grids in all three dimension, and output the relative error.
     num_point = [41, 41, 41] # This sets number of sampling points per dimension, which are doubled
-    integral_value2 = cupyint.booles_integrate(function, param_values, bound, num_point, boundary) #We use simpson_integrate function
+    integral_value2 = cupyint.booles_integrate(function, param_values, bound, num_point, boundary) #We use booles_integrate function
     relative_error = cp.abs(integral_value - integral_value2) / integral_value # relative error
     
     print(f"integral value with denser grids: {integral_value2.get()}")
