@@ -129,7 +129,7 @@ Our second example is a more complicated one, as we will try to integrate :math:
 
 .. note::
 
-  There are other ways to define the ``parame_values`` in the above code, depending on user's habit. The core rule is that the ``params_values`` should be a 2D ``cp.array``, like [[1, 2, 0.5], [1.00090009, 2.00180018, 0.50045005], ..., [10, 20, 5]] in our case here.
+  There are other ways to define the ``params_values`` in the above code, depending on user's habit. The core rule is that the ``params_values`` should be a 2D ``cp.array``, like [[1, 2, 0.5], [1.00090009, 2.00180018, 0.50045005], ..., [10, 20, 5]] in our case here.
 
 Actually, **cupyint** is capable of handling multiple paramaters, and can automatically vectorize the integrand to avoid explicit for-loop, thus to facilitate faster calculation. The output ``integral_value`` should have the same length of the input ``param`` length, corresponding to various parameter sets. To analyze the error, we doubled the grids on all three dimensions, and obtained a relative error of ~0.6%. The output of the program is 
 
