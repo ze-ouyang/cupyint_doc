@@ -456,7 +456,7 @@ Again, we see an improvement on the accuracy when doubling the grids.
 Monte Carlo integration
 --------
 
-Monte Carlo integration is based on random sampling. It estimates the integral by generating random samples within the integration domain and averaging the function values. This method is particularly effective for high-dimensional integrals, with statistical errors decreasing as the sample size increases. For example, for 1D integration :math:`f(x)` over domain :math:`(a,b)`, we have the integration :math:`I` given by
+Monte Carlo integration is based on random sampling. It estimates the integral by generating random samples within the integration domain and averaging the function values. This method is stochastic, and is particularly effective for high-dimensional integrals, with statistical errors decreasing as the sample size increases. For example, for 1D integration :math:`f(x)` over domain :math:`(a,b)`, we have the integration :math:`I` given by
 
 .. math::
 
