@@ -79,10 +79,40 @@ The output of the program is:
 To estimate the error in this case, we compare the integral value with analytical one, obatained a relative error of ~0.02% with 20 segments in the integral domain. In general case, to estimate the error, we encourage users to refine the grids and analyze the convergence.
 
 
-Our second example is a more complicated one, as we will try to integrate :math:`f(x_1,x_2,x_3)=a_1\cdote^{-a_2(x_1^2+x_2^2+x_3^2)}+a_3\mathrm{sin}(x1)\cdot\mathrm{sin}(x2)\cdot\mathrm{sin}(x3)`, over the domain :math:`x_1\in (0,1)`, :math:`x_2\in (0,1)`, :math:`x_3\in (0,1)`, and :math:`x_1^2+x_2^2+x_3^2<1`. For the parameters, we will have multiple sets of :math:`a_1`, :math:`a_2`, and :math:`a_3`. Details can be found in the code below.
+Our second example is a more complicated one, as we will try to integrate :math:`f(x_1,x_2,x_3)=a_1\cdote^{-a_2(x_1^2+x_2^2+x_3^2)}+a_3\mathrm{sin}(x1)\cdot\mathrm{sin}(x2)\cdot\mathrm{sin}(x3)`, over the domain :math:`x_1\in (0,1)`, :math:`x_2\in (0,1)`, :math:`x_3\in (0,1)`, :math:`x_1^2+x_2^2+x_3^2>0.2`, and :math:`x_1^2+x_2^2+x_3^2<0.8`. For the parameters, we will have multiple sets of :math:`a_1`, :math:`a_2`, and :math:`a_3`. Details can be found in the code below.
 
 .. code-block:: python  
 
+  import cupy as cp #required package for cupyint
+  import cupyint
+  
+  data_type=cp.float32
+  cupyint.set_backend(data_type) #this sets single precision data type in the backend
+  
+  def function(x1, x2, x3, params): # this is the standard way to define an integrand with parameters
+      a1 = params[0]
+      a2 = params[1]
+      a3 = params[2]
+      return a1 * cp.exp(-a2 * (x1**2 + x2**2 + x3**2)) + a3 * cp.sin(x1) * cp.cos(x2) * cp.exp(x3)
+
+  # This sets the parameter set, which is a 2d array in all cases. In this case, we have 1e4 parameter sets
+  a1_values = cp.linspace(1.0, 10.0, 10000, dtype=data_type)
+  a2_values = cp.linspace(2.0, 20.0, 10000, dtype=data_type)
+  a3_values = cp.linspace(0.5, 5, 10000, dtype=data_type)
+  param_values = cp.stack((a1_values, a2_values, a3_values), axis=1) 
+
+  bound = [[0, 1], [0, 1], [0, 1]] # This sets integral limitation as (0,1),(0,1), and (0,1) for x1, x2, and x3, respectively.
+  num_point = [20, 20, 20] # This sets number of sampling points per dimension.
+  
+  def boundary(x1, x2, x3):
+      condition1 = x1**2 + x2**2 + x3**2 > 0.2
+      condition2 = x1**2 + x2**2 + x3**2 < 0.8
+      return condition1 & condition2
+  
+  integral_value = cupyint.trapz_integrate(function, param_values, bound, num_point, boundary) #We use trapz_integrate function
+  
+  print(f"integral value: {integral_value.get()}") # Output integral value
+  print(f"length of integral value: {integral_value.size}") # Output length of the integral value
 
 
 
