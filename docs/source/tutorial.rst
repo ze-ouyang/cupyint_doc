@@ -468,7 +468,7 @@ In this section, we still provide 2 examples, which calculate the same integral 
 
 .. note::
 
-    As mentioned before, the interfaces of Monte Carlo integration and Importance-sampling Monte Carlo integration are slightly different from that of previous four methods. For Monte Carlo integration case here, the only difference is that ``num_points`` parameter should be an integer rather than a list as before. And with this manner, we sample same number of points (which is indicated by ``num_points``) in each dimension.
+    As mentioned before, the interfaces of Monte Carlo integration and Importance-sampling Monte Carlo integration are slightly different from that of previous four methods. For Monte Carlo integration case here, the only difference is that ``num_points`` parameter should be an integer rather than a list as before. And with this manner, we sample the same number of points (which is indicated by ``num_points``) in each dimension.
 
 The code for the first example is given below
 
@@ -562,6 +562,14 @@ Again, we see an improvement on the accuracy when tenfolding the grids.
 
 Importance-sampling Monte Carlo integration  
 --------
+
+Importance Sampling Monte Carlo Integration is an improved Monte Carlo method that reduces variance and increases efficiency by sampling from a probability distribution related to the target function. It performs well when the probability density function closely matches the target function. For example, we try to integrate :math:`f(x)` over domain :math:`(a,b)`, given by
+
+.. math::
+
+  I \approx \int f(x)\mathrm d x
+
+We first introduce a normalized importance distribution :math:`p(x)` such that :math:`p(x)>0`. The integral
 
 
 
