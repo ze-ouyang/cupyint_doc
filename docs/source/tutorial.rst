@@ -356,6 +356,13 @@ Gaussian Quadrature is an efficient numerical integration method that uses the r
 Monte Carlo integration
 --------
 
+.. math::
+
+   \begin{align}
+   E &= mc^2 + \frac{1}{2}mv^2 \\
+   F &= ma
+   \end{align}
+
 
 Importance-sampling Monte Carlo integration  
 --------
