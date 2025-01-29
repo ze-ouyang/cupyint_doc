@@ -353,7 +353,7 @@ Gaussian Quadrature is an efficient numerical integration method that uses the r
 
   \int_{-1}^1 f(x) \mathrm d x \approx \sum_{i=1}^n w_i f(x_i)
 
-where :math:`x_i` are the nodes, or roots of the :math:`n` th degree Legendre polynomial :math:`P_n(x)`, :math:`w_i` are the weights associated with each node, :math:`n` is the number of nodes, also known as the order of quadrature. Both :math:`x_i` and :math:`w_i` are precomputed values, we suggest the users ask `DeepSeek <https://www.deepseek.com/>`_ for details. As for the general integral :math:`(a,b)` , we have the transformation that 
+where :math:`x_i` are the nodes, or roots of the :math:`n` th degree Legendre polynomial :math:`P_n(x)`, :math:`w_i` are the weights associated with each node, :math:`n` is the number of nodes, also known as the order of quadrature. Both :math:`x_i` and :math:`w_i` are precomputed values, we suggest the users ask `DeepSeek <https://www.deepseek.com/>`_ for details. As for the general integral :math:`(a,b)`, we have the transformation that 
 
 .. math::
 
@@ -455,6 +455,14 @@ Again, we see an improvement on the accuracy when doubling the grids.
 
 Monte Carlo integration
 --------
+
+Monte Carlo integration is based on random sampling. It estimates the integral by generating random samples within the integration domain and averaging the function values. This method is particularly effective for high-dimensional integrals, with statistical errors decreasing as the sample size increases. For example, for 1D integration :math:`f(x)` over domain :math:`(a,b)`, we have the integration :math:`I` given by
+
+.. math::
+
+  I \approx \frac{b-a}{n}\sum_{i=1}^n f(x_i)
+
+where :math:`x_i` are randomly generated points in the integration domain.
 
 
 Importance-sampling Monte Carlo integration  
