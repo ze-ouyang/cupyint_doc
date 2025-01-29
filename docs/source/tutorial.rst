@@ -254,11 +254,12 @@ Boole's integration is derived from Newton-Cotes formulas with fourth-order poly
   & + 14\sum_{i=4,8,12,...}^{4N-4} f(x_i) + 7f(x_{n}) \right)
   \end{align}
 
+
 .. math::
 
    \begin{align}
-   I &= \frac{2\Delta x}{45} \left( 7f(x_i) + 32\sum_{i=1,5,9,...}^{4N-3} f(x_i) + 12\sum_{i=2,6,10,...}^{4N-2} f(x_i) \\
-   & + 14\sum_{i=4,8,12,...}^{4N-4} f(x_i) + 7f(x_{n}) \right)
+   E &= mc^2 + \frac{1}{2}mv^2 \\
+   F &= ma
    \end{align}
 
 
@@ -369,13 +370,6 @@ Gaussian Quadrature is an efficient numerical integration method that uses the r
 
 Monte Carlo integration
 --------
-
-.. math::
-
-   \begin{align}
-   E &= mc^2 + \frac{1}{2}mv^2 \\
-   F &= ma
-   \end{align}
 
 
 Importance-sampling Monte Carlo integration  
