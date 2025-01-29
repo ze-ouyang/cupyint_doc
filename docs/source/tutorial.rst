@@ -52,19 +52,16 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
   import cupy as cp #required package for cupyint
   import cupyint
 
-  data_type = cp.float32
+  data_type=cp.float32
   cupyint.set_backend(data_type) #this sets single precision data type in the backend
 
-  def function(x, params):
-    # "params" is necessary in defining the integrand.
-    # However, this depends on how many parameters we have for the integrand. For the case here, we will set "params" to 1 later.
-      return cp.sin(x) * params[0]
+  def function (x):
+      return cp.sin(x)
 
-  params = cp.asarray([[1]], dtype=data_type) # We only accept 2D parameters in cp.array form. Please pay special attention.
-  bound = [[0, 1]] # This sets integral limitation as (0, 1).
-  num_point = [20] # This sets number of sampling points per dimension. 
-  integral_value = cupyint.trapz_integrate(function, params, bound, num_point, boundaries=None) #We use trapz_integrate function
-  print(f"integral_value: {integral_value.item():.10f}") # Convert to Python float 
+  bound = [[0, 1]] # This sets integral limitation as (0,1).
+  num_point = [20] # This sets number of sampling points per dimension.
+  integral_value = cupyint.trapz_integrate(function, None, bound, num_point, None) #We use trapz_integrate function
+  print(f"integral_value: {integral_value.item():.10f}") # Convert to Python float
 
 The output of the program is:
 
