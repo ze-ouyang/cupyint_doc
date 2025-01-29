@@ -75,11 +75,11 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
 
 The output of the program is:
 
-.. code-block:: python  
+.. code-block:: none 
 
-  >>> integral value: 0.4595915675
-  >>> analytical value: 0.4596976941
-  >>> relative error: 0.0230861753%
+  integral value: 0.4595915675
+  analytical value: 0.4596976941
+  relative error: 0.0230861753%
 
 To estimate the error in this case, we compare the integral value with the analytical one, obataining a relative error of ~0.02% with 20 segments in the integral domain. In general case, to estimate the error, we encourage users to refine the grids and analyze the convergence.
 
@@ -129,12 +129,12 @@ Our second example is a more complicated one, as we will try to integrate :math:
 
 Actually, **cupyint** is capable of handling multiple paramaters, and can automatically vectorize the integrand to avoid explicit for-loop, thus to facilitate faster calculation. The output ``integral_value`` should have the same length of the input ``param`` length, corresponding to various parameter sets. To analyze the error, we doubled the grids on all three dimensions, and obtained a relative error of ~0.6%. The output of the program is 
 
-.. code-block:: python  
+.. code-block:: none  
 
-  >>> integral value: [0.19233355 0.19240522 0.1924768  ... 0.73139507 0.7314593  0.7315235 ]
-  >>> length of integral value: 10000
-  >>> integral value w/ denser grids: [0.19352302 0.193595   0.1936669  ... 0.7385989  0.7386638  0.7387286 ]
-  >>> relative error: [0.00618441 0.00618374 0.00618314 ... 0.00984942 0.00984945 0.0098494 ]
+  integral value: [0.19233355 0.19240522 0.1924768  ... 0.73139507 0.7314593  0.7315235 ]
+  length of integral value: 10000
+  integral value w/ denser grids: [0.19352302 0.193595   0.1936669  ... 0.7385989  0.7386638  0.7387286 ]
+  relative error: [0.00618441 0.00618374 0.00618314 ... 0.00984942 0.00984945 0.0098494 ]
 
 
 Simpson's integration
