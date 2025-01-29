@@ -343,6 +343,8 @@ The output of this program is
 
 Again, we see an improvement on the accuracy when doubling the grids.
 
+
+
 Gaussian quadrature
 --------
 
