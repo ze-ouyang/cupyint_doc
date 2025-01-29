@@ -11,7 +11,8 @@ Overview
 * complicated integration boundaries  
 * tunable sampling points per dimension  
 * multiple integration methods, including deterministic & stochastic ones  
-* user-friendly interface  
+* user-friendly interface  (So for users not familiar with CuPy, this package is still simple to use)
+
 
 In the following sections, examples are provided with each integration method, while each example is well developed for separate running usage.
 
@@ -44,7 +45,9 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
 * Parameters: Parameters go with the integrand but we don't have parameters in this case, so we input ``None`` in the ``params`` position.   
 * Integral bounds: This is the integral limitation. In this example we set it as :math:`(0,1)`.  
 * Number of sampling points: This defines number of spaced points we have in each dimension. In this example we set it as :math:`20`.  
-* Boundary function: Other than the usual hyper-cubic integral limitations, we might meet cases in which integral limitations are functions of variables, i.e. :math:`x_1^2+x_2^2+x_3^2<1`. In the case here, we don't have a special boundary and we can input ``None`` in its position instead.  
+* Boundary function: Other than the usual hyper-cubic integral limitations, we might meet cases in which integral limitations are functions of variables, i.e. :math:`x_1^2+x_2^2+x_3^2<1`. In the case here, we don't have a special boundary and we can input ``None`` in its position instead. 
+
+For users not familiar with CuPy, just bear in mind to set all the variable in code as ``cp.array``, then everying should work fine.
 
 .. code-block:: python
 
@@ -122,7 +125,7 @@ Our second example is a more complicated one, as we will try to integrate :math:
   print(f"integral value with denser grids: {integral_value2.get()}") 
   print(f"relative error: {relative_error.get()}")
 
-Actually, **cupyint** is capable of handling multiple paramaters, and can automatically vectorize the integrand to perform faster calculation. The output ``integral_value`` should have the same length of the input ``param`` length, corresponding to various parameter sets. To analyze the error, we doubled the grids on all three dimensions (not showing in the code), and obtained a relative error ~0.6%. The output of the program is 
+Actually, **cupyint** is capable of handling multiple paramaters, and can automatically vectorize the integrand to perform faster calculation. The output ``integral_value`` should have the same length of the input ``param`` length, corresponding to various parameter sets. To analyze the error, we doubled the grids on all three dimensions, and obtained a relative error of ~0.6%. The output of the program is 
 
 .. code-block:: python  
 
