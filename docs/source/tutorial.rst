@@ -114,12 +114,18 @@ Our second example is a more complicated one, as we will try to integrate :math:
   print(f"integral value: {integral_value.get()}") # Output integral value
   print(f"length of integral value: {integral_value.size}") # Output length of the integral value
 
-The output of the program is 
+Actually, **cupyint** is capable of handling multiple paramaters, and can automatically vectorize the integrand to perform faster calculation. The output ``integral_value`` should have the same length of the input ``param`` length, corresponding to various parameter sets. To analyze the error, we doubled the grids on all three dimensions (not showing in the code), and obtained relative error ~0.6%. The output of the program is 
 
 .. code-block:: python  
 
   integral value: [0.19233355 0.19240522 0.1924768  ... 0.73139507 0.7314593  0.7315235 ]
   length of integral value: 10000
+  integral value with denser grids: [0.19352302 0.193595   0.1936669  ... 0.7385989  0.7386638  0.7387286 ]
+  relative error: [0.00618441 0.00618374 0.00618314 ... 0.00984942 0.00984945 0.0098494 ]
 
-Actually, **cupyint** is capable of handling multiple paramaters, and can automatically vectorize the integrand to perform faster calculation. The output ``integral_value`` should have the same length of the input ``param`` length, corresponding to various parameter sets.
+
+
+
+
+
 
