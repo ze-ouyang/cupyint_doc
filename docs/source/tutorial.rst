@@ -34,7 +34,7 @@ Trapezoidal integration is based on linear interpolation, which divides the inte
 
    I = \frac{\Delta x}{2} \left( f(x_0) + 2\sum_{i=1}^{n-1} f(x_i) + f(x_n) \right)
 
-where :math:`x_0, x_1,...,x_n` are equally spaced points. This method is determininstic, suitable for linear functions, and accepts arbitrary number of points (odd or even) per dimension. The truncation error for this method is :math:`\mathcal{O}(\Delta x^2)`.
+where :math:`x_0, x_1,...,x_n` are equally spaced points, and :math:`\Delta x=x_i-x_{i-1}`. This method is determininstic, suitable for linear functions, and accepts arbitrary number of points (odd or even) per dimension. The truncation error for this method is :math:`\mathcal{O}(\Delta x^2)`.
 
 In this section, we provide 2 examples on utilizing trapezoidal integration method with **cupyint**. The trapezoidal integration function is ``cupyint.trapz_integrate(function, params, bounds, num_points, boundaries)``.
 
@@ -148,9 +148,9 @@ Simpson's integration is based on quadratic interpolation. It divides the integr
 
 .. math::
 
-   I = \frac{\Delta x}{3} \left( f(x_0) + 4\sum_{i=1,3,5}^{n-1} f(x_i) + 2\sum_{i=2,4,6}^{n-2} f(x_i) + f(x_n) \right)
+   I = \frac{\Delta x}{3} \left( f(x_0) + 4\sum_{i=1,3,5,...}^{n-1} f(x_i) + 2\sum_{i=2,4,6,...}^{n-2} f(x_i) + f(x_n) \right)
 
-where :math:`x_0, x_1,...,x_n` are equally spaced points. This method is determininstic, suitable for smooth functions, and accepts odd number of points per dimension. The truncation error for this method is :math:`\mathcal{O}(\Delta x^4)`, about 2 orders of magnitude higher than that of trapezoidal integration. 
+where :math:`x_0, x_1,...,x_n` are equally spaced points, and :math:`\Delta x=x_i-x_{i-1}`. This method is determininstic, suitable for smooth functions, and accepts odd number of points per dimension. The truncation error for this method is :math:`\mathcal{O}(\Delta x^4)`, about 2 orders of magnitude higher than that of trapezoidal integration. 
 
 In this section, we still provide 2 examples, which calculate the same integral as we did in the Trapzoidal integration section, but codes are different (obviously).
 
@@ -245,7 +245,11 @@ Again, we see an improvement on the accuracy when doubling the grids.
 
 Boole's integration
 --------
+Boole's integration is derived from Newton-Cotes formulas with fourth-order polynomial interpolation. It divides the integration interval into subintervals and computes the integral using a five-point interpolation formula. This method is suitable for smooth functions requiring higher precision. For example, for 1D integration of :math:`f(x)`, we have the Simpson's integration :math:`I` given by 
 
+.. math::
+
+   I = \frac{2\Delta x}{45} \left( 7f(x_0) + 32\sum_{i=1,5,9,...}^{4n-3} f(x_i) + 12\sum_{i=2,6,10,...}^{4n-2} f(x_i) + 32\sum_{i=3,7,11,...}^{4n-1} f(x_i) + 14\sum_{i=4,8,12,...}^{4n-4} f(x_i) + 7f(x_{4n}) \right)
 
 
 Gaussian quadrature
