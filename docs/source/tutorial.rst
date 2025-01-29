@@ -114,6 +114,14 @@ Our second example is a more complicated one, as we will try to integrate :math:
   print(f"integral value: {integral_value.get()}") # Output integral value
   print(f"length of integral value: {integral_value.size}") # Output length of the integral value
 
+  # To estimate error, we double the grids in all three dimension, and output the relative error.
+  num_point = [40, 40, 40] # This sets number of sampling points per dimension.
+  integral_value2 = cupyint.trapz_integrate(function, param_values, bound, num_point, boundary) #We use trapz_integrate function
+  relative_error = cp.abs(integral_value-integral_value2)/integral_value # relative error
+
+  print(f"integral value with denser grids: {integral_value2.get()}") 
+  print(f"relative error: {relative_error.get()}")
+
 Actually, **cupyint** is capable of handling multiple paramaters, and can automatically vectorize the integrand to perform faster calculation. The output ``integral_value`` should have the same length of the input ``param`` length, corresponding to various parameter sets. To analyze the error, we doubled the grids on all three dimensions (not showing in the code), and obtained relative error ~0.6%. The output of the program is 
 
 .. code-block:: python  
