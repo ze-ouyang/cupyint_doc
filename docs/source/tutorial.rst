@@ -47,7 +47,7 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
 * Number of sampling points: This defines number of spaced points we have in each dimension. In this example we set it as :math:`20`.  
 * Boundary function: Other than the usual hyper-cubic integral limitations, we might meet cases in which integral limitations are functions of variables, i.e. :math:`x_1^2+x_2^2+x_3^2<1`. In the case here, we don't have a special boundary and we can input ``None`` in its position instead. 
 
-For users not familiar with CuPy, just bear in mind to set all the variable in code as ``cp.array``, then everying should work fine.
+For users not familiar with CuPy, just bear in mind to set all the variable in code in the form of ``cp.array``, then everying should work fine.
 
 .. code-block:: python
 
