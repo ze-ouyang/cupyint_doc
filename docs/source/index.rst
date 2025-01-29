@@ -18,4 +18,5 @@ Contents
 
    usage
    tutorial
+   comparison
    api
