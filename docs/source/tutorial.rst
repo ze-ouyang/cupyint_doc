@@ -258,9 +258,19 @@ Boole's integration is derived from Newton-Cotes formulas with fourth-order poly
 .. math::
 
    \begin{align}
+   I &= \frac{2\Delta x}{45} \left( 7f(x_i) + 32\sum_{i=1,5,9,...}^{4N-3} f(x_i) + 12\sum_{i=2,6,10,...}^{4N-2} f(x_i) \\
+   F &= ma
+   \end{align}
+
+
+
+.. math::
+
+   \begin{align}
    E &= mc^2 + \frac{1}{2}mv^2 \\
    F &= ma
    \end{align}
+
 
 
 where :math:`x_0, x_1,...,x_n` are equally spaced points, :math:`\Delta x=x_i-x_{i-1}`, and :math:`N` is an integer. This method is determininstic, suitable for smooth functions, and accepts :math:`4N+1` number of points per dimension, where :math:`N` is an integer. The truncation error for this method is :math:`\mathcal{O}(\Delta x^6)`.
