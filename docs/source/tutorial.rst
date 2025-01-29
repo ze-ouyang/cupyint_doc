@@ -13,7 +13,7 @@ Overview
 * multiple integration methods, including deterministic & stochastic ones  
 * user-friendly interface  
 
-In the following sections, examples are provided with each integration method:
+In the following sections, examples are provided with each integration method, while each example is well developed to run separately.
 
 1. Trapezoidal integration  
 2. Simpson's integration  
@@ -82,6 +82,7 @@ To estimate the error in this case, we compare the integral value with analytica
 Our second example is a more complicated one, as we will try to integrate :math:`f(x_1,x_2,x_3)=a_1\cdote^{-a_2(x_1^2+x_2^2+x_3^2)}+a_3\mathrm{sin}(x1)\cdot\mathrm{sin}(x2)\cdot\mathrm{sin}(x3)`, over the domain :math:`x_1\in (0,1)`, :math:`x_2\in (0,1)`, :math:`x_3\in (0,1)`, and :math:`x_1^2+x_2^2+x_3^2<1`. For the parameters, we will have multiple sets of :math:`a_1`, :math:`a_2`, and :math:`a_3`. Details can be found in the code below.
 
 .. code-block:: python  
+
 
 
 
