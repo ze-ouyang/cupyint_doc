@@ -240,7 +240,7 @@ The output of this program is
   integral value with denser grids: [0.19361119 0.19368313 0.19375499 ... 0.7396032  0.73966813 0.73973316]
   relative error: [0.00363363 0.00363427 0.00363483 ... 0.00110327 0.00110333 0.00110307]
 
-Again, we see an improvement of accuracy when doubling the grids.
+Again, we see an improvement on the accuracy when doubling the grids.
 
 
 Boole's integration
