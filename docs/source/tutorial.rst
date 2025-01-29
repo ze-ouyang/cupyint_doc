@@ -75,9 +75,9 @@ The output of the program is:
 
 .. code-block:: python  
 
-  integral value: 0.4595915675
-  analytical value: 0.4596976941
-  relative error: 0.0230861753%
+  >>> integral value: 0.4595915675
+  >>> analytical value: 0.4596976941
+  >>> relative error: 0.0230861753%
 
 To estimate the error in this case, we compare the integral value with the analytical one, obataining a relative error of ~0.02% with 20 segments in the integral domain. In general case, to estimate the error, we encourage users to refine the grids and analyze the convergence.
 
