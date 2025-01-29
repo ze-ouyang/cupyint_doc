@@ -11,7 +11,7 @@ Overview
 * complicated integration boundaries  
 * tunable sampling points per dimension  
 * multiple integration methods, including deterministic & stochastic ones  
-* user-friendly interface  (So for users not familiar with CuPy, this package is still simple to use)
+* user-friendly interface  (So for users **not familiar** with CuPy, this package is still simple to use)
 
 
 In the following sections, examples are provided with each integration method, while each example is well developed for separate running usage.
