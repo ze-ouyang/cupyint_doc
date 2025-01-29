@@ -6,7 +6,7 @@ cupyint Documentation
 
 
 Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+the :ref:`installation` of this project.
 
 .. note::
 
