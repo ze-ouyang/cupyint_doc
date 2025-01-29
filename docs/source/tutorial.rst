@@ -361,6 +361,96 @@ where :math:`x_i` are the nodes, or roots of the :math:`n` th degree Legendre po
 
 Above is the case for 1D integral of function :math:`f(x)` over domain :math:`(a,b)`.
 
+In this section, we still provide 2 examples, which calculate the same integral as we did in the Trapzoidal integration section, but codes are different (obviously).
+
+The code for the first example is given below
+
+.. code-block:: python 
+
+  import cupy as cp # Required package for cupyint
+  import cupyint
+  
+  data_type = cp.float32
+  cupyint.set_backend(data_type) # This sets single precision data type in the backend
+  
+  def function (x):
+      return cp.sin(x)
+  
+  bound = [[0, 1]] # This sets integral limitation as (0,1).
+  num_point = [20] # This sets number of sampling points per dimension.
+  integral_value = cupyint.gauss_integrate(function, None, bound, num_point, None) #We use gauss_integrate function
+  
+  analytical_value = cp.cos(0) - cp.cos(1) # absolute value of this integral
+  relative_error = cp.abs(integral_value - analytical_value) / analytical_value # relative error
+  
+  print(f"integral value: {integral_value.item():.10f}") # Convert to Python float
+  print(f"analytical value: {analytical_value.item():.10f}")
+  print(f"relative error: {relative_error.item():.10%}")
+
+The output of the program is 
+
+.. code-block:: none 
+
+  integral value: 0.4596976936
+  analytical value: 0.4596976941
+  relative error: 0.0000001187%
+
+In the output, we see a relative error of ~0.00000011% with 20 nodes in the integral domain.  
+
+The code for the second example is given below
+
+.. code-block:: python  
+
+  import cupy as cp #required package for cupyint
+  import cupyint
+  
+  data_type = cp.float32
+  cupyint.set_backend(data_type) #this sets single precision data type in the backend
+  
+  def function(x1, x2, x3, params): # this is the standard way to define an integrand with parameters
+      a1 = params[0]
+      a2 = params[1]
+      a3 = params[2]
+      return a1 * cp.exp(-a2 * (x1**2 + x2**2 + x3**2)) + a3 * cp.sin(x1) * cp.cos(x2) * cp.exp(x3)
+  
+  # This sets the parameter set, which is a 2d array in all cases. In this case, we have 1e4 parameter sets
+  a1_values = cp.linspace(1.0, 10.0, 10000, dtype = data_type)
+  a2_values = cp.linspace(2.0, 20.0, 10000, dtype = data_type)
+  a3_values = cp.linspace(0.5, 5, 10000, dtype = data_type)
+  param_values = cp.stack((a1_values, a2_values, a3_values), axis=1)
+  
+  bound = [[0, 1], [0, 1], [0, 1]] # This sets integral limitation as (0,1),(0,1), and (0,1) for x1, x2, and x3, respectively.
+  num_point = [20, 20, 20] # This sets number of sampling points per dimension.
+  
+  def boundary(x1, x2, x3):
+      condition1 = x1**2 + x2**2 + x3**2 > 0.2
+      condition2 = x1**2 + x2**2 + x3**2 < 0.8
+      return condition1 & condition2
+  
+  integral_value = cupyint.gauss_integrate(function, param_values, bound, num_point, boundary) # We use gauss_integrate function
+  
+  print(f"integral value: {integral_value.get()}") # Output integral value
+  print(f"length of integral value: {integral_value.size}") # Output length of the integral value
+  
+  # To estimate error, we double the grids in all three dimension, and output the relative error.
+  num_point = [40, 40, 40] # This sets number of sampling points per dimension, which are doubled
+  integral_value2 = cupyint.gauss_integrate(function, param_values, bound, num_point, boundary) #We use gauss_integrate function
+  relative_error = cp.abs(integral_value - integral_value2) / integral_value # relative error
+  
+  print(f"integral value with denser grids: {integral_value2.get()}")
+  print(f"relative error: {relative_error.get()}")
+
+The output of this program is
+
+.. code-block:: none 
+
+  integral value: [0.19423467 0.19430667 0.19437855 ... 0.7441452  0.7442106  0.74427605]
+  length of integral value: 10000
+  integral value with denser grids: [0.19395865 0.19403082 0.19410291 ... 0.7405079  0.7405729  0.7406379 ]
+  relative error: [0.00142103 0.00141966 0.00141807 ... 0.00488791 0.00488796 0.00488817]
+
+Again, we see an improvement on the accuracy when doubling the grids.
+
 
 
 Monte Carlo integration
