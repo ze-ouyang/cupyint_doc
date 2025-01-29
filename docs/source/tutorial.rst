@@ -462,7 +462,50 @@ Monte Carlo integration is based on random sampling. It estimates the integral b
 
   I \approx \frac{b-a}{n}\sum_{i=1}^n f(x_i)
 
-where :math:`x_i` are randomly generated points in the integration domain, :math:`n` is the number of random points generated. The error of this method scales as :math:`\mathcal{O}\left(\frac{1}{\sqrt n} \right)`
+where :math:`x_i` are randomly generated points in the integration domain, :math:`n` is the number of random points generated. The error of this method scales as :math:`\displaystyle{\mathcal{O}\left(\frac{1}{\sqrt n} \right)}`. 
+
+In this section, we still provide 2 examples, which calculate the same integral as we did in the Trapzoidal integration section, but codes are different (obviously).
+
+.. note::
+
+    As mentioned before, the interfaces of Monte Carlo integration and Importance-sampling Monte Carlo integration are slightly different from that of previous four methods. For Monte Carlo integration case here, the only difference is that ``num_points`` parameter should be an integer rather than a list as before. And with this manner, we sample same number of points (which is indicated by ``num_points``) in each dimension.
+
+The code for the first example is given below
+
+.. code-block:: python 
+
+  import cupy as cp # Required package for cupyint
+  import cupyint
+  
+  data_type = cp.float32
+  cupyint.set_backend(data_type) # This sets single precision data type in the backend
+  
+  def function (x):
+      return cp.sin(x)
+  
+  bound = [[0, 1]] # This sets integral limitation as (0,1).
+  num_point = 1000 # This sets number of sampling points per dimension.
+  integral_value = cupyint.mc_integrate(function, None, bound, num_point, None) #We use mc_integrate function
+  
+  analytical_value = cp.cos(0) - cp.cos(1) # absolute value of this integral
+  relative_error = cp.abs(integral_value - analytical_value) / analytical_value # relative error
+  
+  print(f"integral value: {integral_value.item():.10f}") # Convert to Python float
+  print(f"analytical value: {analytical_value.item():.10f}")
+  print(f"relative error: {relative_error.item():.10%}")
+
+The output of the program is 
+
+.. code-block:: none 
+
+  integral value: 0.4639013112
+  analytical value: 0.4596976941
+  relative error: 0.9144307402%
+
+For 1000 sampling points here, the relative error ranges from about 0.5% to 5%. More sampling points are expected to lead to a more stable relative error.
+
+
+
 
 
 Importance-sampling Monte Carlo integration  
