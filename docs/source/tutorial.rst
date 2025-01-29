@@ -48,11 +48,11 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
 
 .. code-block:: python
 
-  import cupy as cp #required package for cupyint
+  import cupy as cp # Required package for cupyint
   import cupyint
 
-  data_type=cp.float32
-  cupyint.set_backend(data_type) #this sets single precision data type in the backend
+  data_type = cp.float32
+  cupyint.set_backend(data_type) # This sets single precision data type in the backend
 
   def function (x):
       return cp.sin(x)
@@ -61,8 +61,8 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
   num_point = [20] # This sets number of sampling points per dimension.
   integral_value = cupyint.trapz_integrate(function, None, bound, num_point, None) #We use trapz_integrate function
 
-  analytical_value = cp.cos(0)-cp.cos(1) # absolute value of this integral
-  relative_error = cp.abs(integral_value-analytical_value)/analytical_value # relative error
+  analytical_value = cp.cos(0) - cp.cos(1) # absolute value of this integral
+  relative_error = cp.abs(integral_value - analytical_value) / analytical_value # relative error
 
   print(f"integral value: {integral_value.item():.10f}") # Convert to Python float
   print(f"analytical value: {analytical_value.item():.10f}") 
@@ -86,7 +86,7 @@ Our second example is a more complicated one, as we will try to integrate :math:
   import cupy as cp #required package for cupyint
   import cupyint
   
-  data_type=cp.float32
+  data_type = cp.float32
   cupyint.set_backend(data_type) #this sets single precision data type in the backend
   
   def function(x1, x2, x3, params): # this is the standard way to define an integrand with parameters
@@ -96,9 +96,9 @@ Our second example is a more complicated one, as we will try to integrate :math:
       return a1 * cp.exp(-a2 * (x1**2 + x2**2 + x3**2)) + a3 * cp.sin(x1) * cp.cos(x2) * cp.exp(x3)
 
   # This sets the parameter set, which is a 2d array in all cases. In this case, we have 1e4 parameter sets
-  a1_values = cp.linspace(1.0, 10.0, 10000, dtype=data_type)
-  a2_values = cp.linspace(2.0, 20.0, 10000, dtype=data_type)
-  a3_values = cp.linspace(0.5, 5, 10000, dtype=data_type)
+  a1_values = cp.linspace(1.0, 10.0, 10000, dtype = data_type)
+  a2_values = cp.linspace(2.0, 20.0, 10000, dtype = data_type)
+  a3_values = cp.linspace(0.5, 5, 10000, dtype = data_type)
   param_values = cp.stack((a1_values, a2_values, a3_values), axis=1) 
 
   bound = [[0, 1], [0, 1], [0, 1]] # This sets integral limitation as (0,1),(0,1), and (0,1) for x1, x2, and x3, respectively.
@@ -109,7 +109,7 @@ Our second example is a more complicated one, as we will try to integrate :math:
       condition2 = x1**2 + x2**2 + x3**2 < 0.8
       return condition1 & condition2
   
-  integral_value = cupyint.trapz_integrate(function, param_values, bound, num_point, boundary) #We use trapz_integrate function
+  integral_value = cupyint.trapz_integrate(function, param_values, bound, num_point, boundary) # We use trapz_integrate function
   
   print(f"integral value: {integral_value.get()}") # Output integral value
   print(f"length of integral value: {integral_value.size}") # Output length of the integral value
@@ -117,7 +117,7 @@ Our second example is a more complicated one, as we will try to integrate :math:
   # To estimate error, we double the grids in all three dimension, and output the relative error.
   num_point = [40, 40, 40] # This sets number of sampling points per dimension, which are doubled
   integral_value2 = cupyint.trapz_integrate(function, param_values, bound, num_point, boundary) #We use trapz_integrate function
-  relative_error = cp.abs(integral_value-integral_value2)/integral_value # relative error
+  relative_error = cp.abs(integral_value - integral_value2) / integral_value # relative error
 
   print(f"integral value with denser grids: {integral_value2.get()}") 
   print(f"relative error: {relative_error.get()}")
