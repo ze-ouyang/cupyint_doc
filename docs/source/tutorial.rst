@@ -49,7 +49,7 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
 
 .. note::
 
-    For users not familiar with CuPy, just bear in mind to set all the variables in your code in the form of ``cp.array``, then everying should work fine.
+    For users not familiar with CuPy, just bear in mind to set all the variables in your code in the date type of ``cp.array``, then everying should work fine.
 
 .. code-block:: python
 
