@@ -351,9 +351,13 @@ Gaussian Quadrature is an efficient numerical integration method that uses the r
 
 .. math::
 
-  \int_{-1}^1 f(x) \approx \sum_{i=1}^n w_i f(x_i)
+  \int_{-1}^1 f(x) \mathrm d x \approx \sum_{i=1}^n w_i f(x_i)
 
-where :math:`x_i` are the nodes, or roots of the :math:`n-` th degree Legendre polynomial :math:`P_n(x)`, :math:`w_i` are the weights associated with each node, :math:`n` is the number of nodes, also known as the order of quadrature. Both :math:`x_i` and :math:`w_i` are precomputed, for details we suggest the users ask `DeepSeek <https://www.deepseek.com/>`_.
+where :math:`x_i` are the nodes, or roots of the :math:`n` th degree Legendre polynomial :math:`P_n(x)`, :math:`w_i` are the weights associated with each node, :math:`n` is the number of nodes, also known as the order of quadrature. Both :math:`x_i` and :math:`w_i` are precomputed values, we suggest the users ask `DeepSeek <https://www.deepseek.com/>`_ for details. As for the general integral :math:`(a,b)` , we have the transformation that 
+
+.. math::
+
+  I = \int_{a}^b f(x) \mathrm d x \approx  \frac{b-a}{2} \sum_{i=1}^n w_i f(\frac{b-a}{2}x_i+\frac{a+b}{2})
 
 
 
