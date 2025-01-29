@@ -41,10 +41,10 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
 
 * Data precision format: this sets whether data is float32 or float64. The former uses less memory but provides less accuracy. Here we will use float32.  
 * Integrand: function to be integrated. Here it is :math:`f(x)=\mathrm{sin}(x)`.  
-* Parameters: Parameters go with the integrand but we don't have parameters in this case, so we input "None" in the "params" position.   
+* Parameters: Parameters go with the integrand but we don't have parameters in this case, so we input ``None`` in the ``params`` position.   
 * Integral bounds: This is the integral limitation. In this example we set it as :math:`(0,1)`.  
 * Number of sampling points: This defines number of spaced points we have in each dimension. In this example we set it as :math:`20`.  
-* Boundary function: Other than the usual hyper-cubic integral limitations, we might meet cases in which integral limitations are functions of variables, i.e. :math:`x_1^2+x_2^2+x_3^2<1`. In the case here, we don't have a special boundary and we can input "None" in its position instead.  
+* Boundary function: Other than the usual hyper-cubic integral limitations, we might meet cases in which integral limitations are functions of variables, i.e. :math:`x_1^2+x_2^2+x_3^2<1`. In the case here, we don't have a special boundary and we can input ``None`` in its position instead.  
 
 .. code-block:: python
 
@@ -114,5 +114,12 @@ Our second example is a more complicated one, as we will try to integrate :math:
   print(f"integral value: {integral_value.get()}") # Output integral value
   print(f"length of integral value: {integral_value.size}") # Output length of the integral value
 
+The output of the program is 
 
+.. code-block:: python  
+
+  integral value: [0.19233355 0.19240522 0.1924768  ... 0.73139507 0.7314593  0.7315235 ]
+  length of integral value: 10000
+
+Actually, **cupyint** is capable of handling multiple paramaters, and can automatically vectorized the integrand to perform faster calculation. The output ``integral_value`` should have the same length of the input ``param`` length, corresponding to the parameter sets.
 
