@@ -5,8 +5,7 @@ cupyint Documentation
 **cupyint** is open-source, seen in https://github.com/ze-ouyang/cupyint.
 
 
-Check out the :doc:`usage` section for further information, including
-the :ref:`installation` of this project.
+Check out the :doc:`usage` section for further information, including the :ref:`installation` of this project.
 
 .. note::
 
