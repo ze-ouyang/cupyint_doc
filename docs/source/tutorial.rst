@@ -133,7 +133,7 @@ Actually, **cupyint** is capable of handling multiple paramaters, and can automa
 
   integral value: [0.19233355 0.19240522 0.1924768  ... 0.73139507 0.7314593  0.7315235 ]
   length of integral value: 10000
-  integral value w/ denser grids: [0.19352302 0.193595   0.1936669  ... 0.7385989  0.7386638  0.7387286 ]
+  integral value with denser grids: [0.19352302 0.193595   0.1936669  ... 0.7385989  0.7386638  0.7387286 ]
   relative error: [0.00618441 0.00618374 0.00618314 ... 0.00984942 0.00984945 0.0098494 ]
 
 
