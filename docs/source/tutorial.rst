@@ -39,7 +39,7 @@ In this section, we provide 2 examples on utilizing trapezoidal integration meth
 
 Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)`. We need to define 6 quantities as indicated by ``cupyint.trapz_integrate(function, params, bounds, num_points, boundaries)``, listed as: data precision format, integrand, parameters, integral bounds, number of sampling points, and boundary function before calculating the integral value.  
 
-* Data precision format: this sets whether data is in float32 or float64. The former uses less memory but provides less accuracy. Here we will use float32.  
+* Data precision format: this sets whether data is float32 or float64. The former uses less memory but provides less accuracy. Here we will use float32.  
 * Integrand: function to be integrated. Here it is :math:`f(x)=\mathrm{sin}(x)`.  
 * Parameters: Parameters go with the integrand but we don't have parameters in this case, so we input "None" in the "params" position.   
 * Integral bounds: This is the integral limitation. In this example we set it as :math:`(0,1)`.  
@@ -60,13 +60,21 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
   bound = [[0, 1]] # This sets integral limitation as (0,1).
   num_point = [20] # This sets number of sampling points per dimension.
   integral_value = cupyint.trapz_integrate(function, None, bound, num_point, None) #We use trapz_integrate function
-  print(f"integral_value: {integral_value.item():.10f}") # Convert to Python float
+
+  analytical_value = cp.cos(0)-cp.cos(1) # absolute value of this integral
+  relative_error = cp.abs(integral_value-analytical_value)/analytical_value # relative error
+
+  print(f"integral value: {integral_value.item():.10f}") # Convert to Python float
+  print(f"analytical value: {analytical_value.item():.10f}") 
+  print(f"relative error: {relative_error.item():.10%}")
 
 The output of the program is:
 
 .. code-block:: python  
 
-  integral_value: 0.4595915675
+  integral value: 0.4595915675
+  analytical value: 0.4596976941
+  relative error: 0.0230861753%
 
 
 
