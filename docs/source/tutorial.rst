@@ -343,10 +343,12 @@ The output of this program is
 
 Again, we see an improvement on the accuracy when doubling the grids.
 
-
-
 Gaussian quadrature
 --------
+
+Gaussian Quadrature is an efficient numerical integration method that uses the roots of orthogonal polynomials (such as Legendre polynomials) as integration points. It approximates the integral by a weighted sum of function values at these points, achieving high accuracy with relatively few points, especially for smooth functions. In this method, we choose the Legendre polynomials as the orthogonal polynomials.
+
+
 
 
 Monte Carlo integration
