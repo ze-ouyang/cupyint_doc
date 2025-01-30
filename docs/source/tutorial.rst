@@ -654,7 +654,7 @@ The code for the second example is given below
   print(f"length of integral value: {integral_value.size}") # Output length of the integral value
   
   # To estimate error, we double the grids in all three dimension, and output the relative error.
-  num_point = 1000 # This sets number of sampling points per dimension, which are doubled
+  num_point = 10000 # This sets number of sampling points per dimension, which are doubled
   integral_value2 = cupyint.adpmc_integrate(function, param_values, bound, num_point, boundary, num_iteration) #We use adpmc_integrate function
   relative_error = cp.abs(integral_value - integral_value2) / integral_value # relative error
   
@@ -665,10 +665,10 @@ The output of this program is
 
 .. code-block:: none 
 
-  integral value: [0.1918464  0.18795647 0.21160436 ... 0.7635065  0.8019642  0.7141852 ]
+  integral value: [0.19941491 0.19811173 0.18565574 ... 0.6883625  0.8074418  0.73465663]
   length of integral value: 10000
-  integral value with denser grids: [0.20503971 0.19298796 0.20018466 ... 0.7836914  0.749918   0.7238339 ]
-  relative error: [0.06877017 0.02676948 0.05396722 ... 0.02643715 0.06489845 0.01351014]
+  integral value with denser grids: [0.18875179 0.19319531 0.19608033 ... 0.71726805 0.75401366 0.727607  ]
+  relative error: [0.05347204 0.02481637 0.05615008 ... 0.04199179 0.06616962 0.0095958 ]
 
 
 
