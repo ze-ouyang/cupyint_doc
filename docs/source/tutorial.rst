@@ -20,10 +20,9 @@ In the following sections, examples are provided with each integration method, w
 2. Simpson's integration  
 3. Boole's integration  
 4. Gaussian quadrature  
-5. Monte Carlo integration  
-6. Importance-sampling Monte Carlo integration  
+5. Monte Carlo integration    
 
-Generally, all methods share almost same interface, with minor difference in Method 5 & 6.
+Generally, all methods share almost same interface, with minor difference in Method 5.
 
 Trapezoidal integration
 --------
@@ -560,18 +559,18 @@ Again, we see an improvement on the accuracy when tenfolding the grids.
 
 
 
-Importance-sampling Monte Carlo integration  
---------
+.. Importance-sampling Monte Carlo integration  
+.. --------
 
-Importance Sampling Monte Carlo Integration is an improved Monte Carlo method that reduces variance and increases efficiency by sampling from a probability distribution related to the target function. It performs well when the probability density function closely matches the target function. For example, we try to integrate :math:`f(x)` over domain :math:`(a,b)`, given by
+.. Importance Sampling Monte Carlo Integration is an improved Monte Carlo method that reduces variance and increases efficiency by sampling from a probability distribution related to the target function. It performs well when the probability density function closely matches the target function. For example, we try to integrate :math:`f(x)` over domain :math:`(a,b)`, given by
 
-.. math::
+.. .. math::
 
-  I = \int_a^b f(x)\mathrm d x
+..  I = \int_a^b f(x)\mathrm d x
 
-We first introduce a normalized importance distribution :math:`p(x)` such that :math:`p(x)>0`. The integral can be rewritten as 
+.. We first introduce a normalized importance distribution :math:`p(x)` such that :math:`p(x)>0`. The integral can be rewritten as 
 
-.. math::
+.. .. math::
 
   I = \int_a^b \frac{f(x)}{p(x)}p(x)  \mathrm d x \approx \frac{1}{n}\sum_{i=1}^n \frac{f(x_i)}{p(x_i)}
 
