@@ -572,102 +572,14 @@ Again, we see an improvement on the accuracy when tenfolding the grids.
 
 .. .. math::
 
-  I = \int_a^b \frac{f(x)}{p(x)}p(x)  \mathrm d x \approx \frac{1}{n}\sum_{i=1}^n \frac{f(x_i)}{p(x_i)}
+..  I = \int_a^b \frac{f(x)}{p(x)}p(x)  \mathrm d x \approx \frac{1}{n}\sum_{i=1}^n \frac{f(x_i)}{p(x_i)}
 
-A proper chosen :math:`p(x)` can drastically reduce the variance of the estimate. In our code, we introduce discrete :math:`p(x)` to perform quasi-multi-importance-sampling, and this leads to another difference of the interface, seen below.
+..A proper chosen :math:`p(x)` can drastically reduce the variance of the estimate. In our code, we introduce discrete :math:`p(x)` to perform quasi-multi-importance-sampling, and this leads to another difference of the interface, seen below.
 
-.. note::
+.... note::
 
-    The interface of Importance-sampling Monte Carlo integration is given by ``adpmc_integrate(func, params, bounds, num_points, boundaries, num_iterations)``, in which you shall see another parameter named ``num_iterations``. The higher this number, the more close the sampling function :math:`p(x)` is to the integrand.
+..    The interface of Importance-sampling Monte Carlo integration is given by ``adpmc_integrate(func, params, bounds, num_points, boundaries, num_iterations)``, in which you shall see another parameter named ``num_iterations``. The higher this number, the more close the sampling function :math:`p(x)` is to the integrand.
 
-The code for the first example is given below
-
-.. code-block:: python 
-
-  import cupy as cp # Required package for cupyint
-  import cupyint
-  
-  data_type = cp.float32
-  cupyint.set_backend(data_type) # This sets single precision data type in the backend
-  
-  def function (x):
-      return cp.sin(x)
-  
-  bound = [[0, 1]] # This sets integral limitation as (0,1).
-  num_point = 1000 # This sets number of sampling points per dimension.
-  num_iteration = 30
-  
-  integral_value = cupyint.adpmc_integrate(function, None, bound, num_point, None, num_iteration) #We use adpmc_integrate function
-  
-  analytical_value = cp.cos(0) - cp.cos(1) # absolute value of this integral
-  relative_error = cp.abs(integral_value - analytical_value) / analytical_value # relative error
-  
-  print(f"integral value: {integral_value.item():.10f}") # Convert to Python float
-  print(f"analytical value: {analytical_value.item():.10f}")
-  print(f"relative error: {relative_error.item():.10%}")
-
-The output of the program is 
-
-.. code-block:: none 
-
-  integral value: 0.4587588310
-  analytical value: 0.4596976941
-  relative error: 0.2042348960%
-
-Since we introcuded the importance sampling method, the fluctuation of the integral value dramatically reduced. 
-
-The code for the second example is given below
-
-.. code-block:: python  
-
-  import cupy as cp #required package for cupyint
-  import cupyint
-  
-  data_type = cp.float32
-  cupyint.set_backend(data_type) #this sets single precision data type in the backend
-  
-  def function(x1, x2, x3, params): # this is the standard way to define an integrand with parameters
-      a1 = params[0]
-      a2 = params[1]
-      a3 = params[2]
-      return a1 * cp.exp(-a2 * (x1**2 + x2**2 + x3**2)) + a3 * cp.sin(x1) * cp.cos(x2) * cp.exp(x3)
-  
-  # This sets the parameter set, which is a 2d array in all cases. In this case, we have 1e4 parameter sets
-  a1_values = cp.linspace(1.0, 10.0, 10000, dtype = data_type)
-  a2_values = cp.linspace(2.0, 20.0, 10000, dtype = data_type)
-  a3_values = cp.linspace(0.5, 5, 10000, dtype = data_type)
-  param_values = cp.stack((a1_values, a2_values, a3_values), axis=1)
-  
-  bound = [[0, 1], [0, 1], [0, 1]] # This sets integral limitation as (0,1),(0,1), and (0,1) for x1, x2, and x3, respectively.
-  num_point = 1000 # This sets number of sampling points per dimension.
-  num_iteration = 30
-  
-  def boundary(x1, x2, x3):
-      condition1 = x1**2 + x2**2 + x3**2 > 0.2
-      condition2 = x1**2 + x2**2 + x3**2 < 0.8
-      return condition1 & condition2
-  
-  integral_value = cupyint.adpmc_integrate(function, param_values, bound, num_point, boundary, num_iteration) # We use adpmc_integrate function
-  
-  print(f"integral value: {integral_value.get()}") # Output integral value
-  print(f"length of integral value: {integral_value.size}") # Output length of the integral value
-  
-  # To estimate error, we double the grids in all three dimension, and output the relative error.
-  num_point = 10000 # This sets number of sampling points per dimension, which are doubled
-  integral_value2 = cupyint.adpmc_integrate(function, param_values, bound, num_point, boundary, num_iteration) #We use adpmc_integrate function
-  relative_error = cp.abs(integral_value - integral_value2) / integral_value # relative error
-  
-  print(f"integral value with denser grids: {integral_value2.get()}")
-  print(f"relative error: {relative_error.get()}")
-
-The output of this program is
-
-.. code-block:: none 
-
-  integral value: [0.19941491 0.19811173 0.18565574 ... 0.6883625  0.8074418  0.73465663]
-  length of integral value: 10000
-  integral value with denser grids: [0.18875179 0.19319531 0.19608033 ... 0.71726805 0.75401366 0.727607  ]
-  relative error: [0.05347204 0.02481637 0.05615008 ... 0.04199179 0.06616962 0.0095958 ]
 
 
 
