@@ -574,11 +574,11 @@ Again, we see an improvement on the accuracy when tenfolding the grids.
 
 ..  I = \int_a^b \frac{f(x)}{p(x)}p(x)  \mathrm d x \approx \frac{1}{n}\sum_{i=1}^n \frac{f(x_i)}{p(x_i)}
 
-..A proper chosen :math:`p(x)` can drastically reduce the variance of the estimate. In our code, we introduce discrete :math:`p(x)` to perform quasi-multi-importance-sampling, and this leads to another difference of the interface, seen below.
+.. A proper chosen :math:`p(x)` can drastically reduce the variance of the estimate. In our code, we introduce discrete :math:`p(x)` to perform quasi-multi-importance-sampling, and this leads to another difference of the interface, seen below.
 
-.... note::
+.. .. note::
 
-..    The interface of Importance-sampling Monte Carlo integration is given by ``adpmc_integrate(func, params, bounds, num_points, boundaries, num_iterations)``, in which you shall see another parameter named ``num_iterations``. The higher this number, the more close the sampling function :math:`p(x)` is to the integrand.
+    The interface of Importance-sampling Monte Carlo integration is given by ``adpmc_integrate(func, params, bounds, num_points, boundaries, num_iterations)``, in which you shall see another parameter named ``num_iterations``. The higher this number, the more close the sampling function :math:`p(x)` is to the integrand.
 
 
 
