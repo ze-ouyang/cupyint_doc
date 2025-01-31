@@ -174,7 +174,7 @@ The code for the first example is given below
   import cupy as cp # Required package for cupyint
   import cupyint
   
-  data_type = cp.float32
+  data_type = cp.float64
   cupyint.set_backend(data_type) # This sets single precision data type in the backend
   
   def function (x):
@@ -211,7 +211,7 @@ The code for the second example is given below
   import cupy as cp #required package for cupyint
   import cupyint
   
-  data_type = cp.float32
+  data_type = cp.float64
   cupyint.set_backend(data_type) #this sets single precision data type in the backend
   
   def function(x1, x2, x3, params): # this is the standard way to define an integrand with parameters
@@ -282,7 +282,7 @@ The code for the first example is given below
   import cupy as cp # Required package for cupyint
   import cupyint
   
-  data_type = cp.float32
+  data_type = cp.float64
   cupyint.set_backend(data_type) # This sets single precision data type in the backend
   
   def function (x):
@@ -319,7 +319,7 @@ The code for the second example is given below
   import cupy as cp #required package for cupyint
   import cupyint
   
-  data_type = cp.float32
+  data_type = cp.float64
   cupyint.set_backend(data_type) #this sets single precision data type in the backend
   
   def function(x1, x2, x3, params): # this is the standard way to define an integrand with parameters
@@ -395,7 +395,7 @@ The code for the first example is given below
   import cupy as cp # Required package for cupyint
   import cupyint
   
-  data_type = cp.float32
+  data_type = cp.float64
   cupyint.set_backend(data_type) # This sets single precision data type in the backend
   
   def function (x):
@@ -432,7 +432,7 @@ The code for the second example is given below
   import cupy as cp #required package for cupyint
   import cupyint
   
-  data_type = cp.float32
+  data_type = cp.float64
   cupyint.set_backend(data_type) #this sets single precision data type in the backend
   
   def function(x1, x2, x3, params): # this is the standard way to define an integrand with parameters
@@ -508,7 +508,7 @@ The code for the first example is given below
   import cupy as cp # Required package for cupyint
   import cupyint
   
-  data_type = cp.float32
+  data_type = cp.float64
   cupyint.set_backend(data_type) # This sets single precision data type in the backend
   
   def function (x):
@@ -545,7 +545,7 @@ The code for the second example is given below
   import cupy as cp #required package for cupyint
   import cupyint
   
-  data_type = cp.float32
+  data_type = cp.float64
   cupyint.set_backend(data_type) #this sets single precision data type in the backend
   
   def function(x1, x2, x3, params): # this is the standard way to define an integrand with parameters
