@@ -54,31 +54,34 @@ Our first example is to integrate :math:`f(x)=\mathrm{sin}(x)` over :math:`(0,1)
 
   import cupy as cp # Required package for cupyint
   import cupyint
-
-  data_type = cp.float32
+  
+  data_type = cp.float64
   cupyint.set_backend(data_type) # This sets single precision data type in the backend
-
+  
   def function (x):
       return cp.sin(x)
-
+  
   bound = [[0, 1]] # This sets integral limitation as (0,1).
   num_point = [20] # This sets number of sampling points per dimension.
   integral_value = cupyint.trapz_integrate(function, None, bound, num_point, None) #We use trapz_integrate function
-
+  
   analytical_value = cp.cos(0) - cp.cos(1) # absolute value of this integral
   relative_error = cp.abs(integral_value - analytical_value) / analytical_value # relative error
-
+  
   print(f"integral value: {integral_value.item():.10f}") # Convert to Python float
-  print(f"analytical value: {analytical_value.item():.10f}") 
+  print(f"analytical value: {analytical_value.item():.10f}")
   print(f"relative error: {relative_error.item():.10%}")
+  
+  print(integral_value.dtype)
 
 The output of the program is:
 
 .. code-block:: none 
 
-  integral value: 0.4595915675
+  integral value: 0.4595915725
   analytical value: 0.4596976941
-  relative error: 0.0230861753%
+  relative error: 0.0230850917%
+  float64
 
 To estimate the error in this case, we compare the integral value with the analytical one, obataining a relative error of ~0.02% with 20 segments in the integral domain. In general case, to estimate the error, we encourage users to refine the grids and analyze the convergence.
 
@@ -90,7 +93,7 @@ Our second example is a more complicated one, as we will try to integrate :math:
   import cupy as cp #required package for cupyint
   import cupyint
   
-  data_type = cp.float32
+  data_type = cp.float64
   cupyint.set_backend(data_type) #this sets single precision data type in the backend
   
   def function(x1, x2, x3, params): # this is the standard way to define an integrand with parameters
@@ -98,13 +101,13 @@ Our second example is a more complicated one, as we will try to integrate :math:
       a2 = params[1]
       a3 = params[2]
       return a1 * cp.exp(-a2 * (x1**2 + x2**2 + x3**2)) + a3 * cp.sin(x1) * cp.cos(x2) * cp.exp(x3)
-
+  
   # This sets the parameter set, which is a 2d array in all cases. In this case, we have 1e4 parameter sets
   a1_values = cp.linspace(1.0, 10.0, 10000, dtype = data_type)
   a2_values = cp.linspace(2.0, 20.0, 10000, dtype = data_type)
   a3_values = cp.linspace(0.5, 5, 10000, dtype = data_type)
-  param_values = cp.stack((a1_values, a2_values, a3_values), axis=1) 
-
+  param_values = cp.stack((a1_values, a2_values, a3_values), axis=1)
+  
   bound = [[0, 1], [0, 1], [0, 1]] # This sets integral limitation as (0,1),(0,1), and (0,1) for x1, x2, and x3, respectively.
   num_point = [20, 20, 20] # This sets number of sampling points per dimension.
   
@@ -117,6 +120,16 @@ Our second example is a more complicated one, as we will try to integrate :math:
   
   print(f"integral value: {integral_value.get()}") # Output integral value
   print(f"length of integral value: {integral_value.size}") # Output length of the integral value
+  
+  # To estimate error, we double the grids in all three dimension, and output the relative error.
+  num_point = [40, 40, 40] # This sets number of sampling points per dimension, which are doubled
+  integral_value2 = cupyint.trapz_integrate(function, param_values, bound, num_point, boundary) #We use trapz_integrate function
+  relative_error = cp.abs(integral_value - integral_value2) / integral_value # relative error
+  
+  print(f"integral value with denser grids: {integral_value2.get()}")
+  print(f"relative error: {relative_error.get()}")
+  
+  print(integral_value.dtype)
 
   # To estimate error, we double the grids in all three dimension, and output the relative error.
   num_point = [40, 40, 40] # This sets number of sampling points per dimension, which are doubled
@@ -134,10 +147,11 @@ Actually, **cupyint** is capable of handling multiple paramaters, and can automa
 
 .. code-block:: none  
 
-  integral value: [0.19233355 0.19240522 0.1924768  ... 0.73139507 0.7314593  0.7315235 ]
+  integral value: [0.19233353 0.19240521 0.1924768  ... 0.7313951  0.73145928 0.73152347]
   length of integral value: 10000
-  integral value with denser grids: [0.19352302 0.193595   0.1936669  ... 0.7385989  0.7386638  0.7387286 ]
-  relative error: [0.00618441 0.00618374 0.00618314 ... 0.00984942 0.00984945 0.0098494 ]
+  integral value with denser grids: [0.19352301 0.19359499 0.19366689 ... 0.73859886 0.73866369 0.73872853]
+  relative error: [0.00618446 0.00618374 0.00618301 ... 0.00984934 0.00984937 0.0098494 ]
+  float64
 
 
 Simpson's integration
@@ -177,6 +191,8 @@ The code for the first example is given below
   print(f"analytical value: {analytical_value.item():.10f}")
   print(f"relative error: {relative_error.item():.10%}")
 
+  print(integral_value.dtype)
+
 The output of the program is 
 
 .. code-block:: none 
@@ -184,6 +200,7 @@ The output of the program is
   integral value: 0.4596977234
   analytical value: 0.4596976941
   relative error: 0.0000063644%
+  float64
 
 In the output, we see a relative error of ~0.000006% with 21 segments in the integral domain. This manifests the aforementioned higher accuracy of this method.
 
@@ -230,6 +247,8 @@ The code for the second example is given below
   print(f"integral value with denser grids: {integral_value2.get()}")
   print(f"relative error: {relative_error.get()}")
 
+  print(integral_value.dtype)
+
 The output of this program is
 
 .. code-block:: none 
@@ -238,6 +257,7 @@ The output of this program is
   length of integral value: 10000
   integral value with denser grids: [0.19361119 0.19368313 0.19375499 ... 0.7396032  0.73966813 0.73973316]
   relative error: [0.00363363 0.00363427 0.00363483 ... 0.00110327 0.00110333 0.00110307]
+  float64
 
 Again, we see an improvement on the accuracy when doubling the grids.
 
@@ -279,6 +299,8 @@ The code for the first example is given below
   print(f"analytical value: {analytical_value.item():.10f}")
   print(f"relative error: {relative_error.item():.10%}")
 
+  print(integral_value.dtype)
+
 The output of the program is 
 
 .. code-block:: none 
@@ -286,6 +308,7 @@ The output of the program is
   integral value: 0.4596976936
   analytical value: 0.4596976941
   relative error: 0.0000001187%
+  float64
 
 In the output, we see a relative error of ~0.00000011% with 21 segments in the integral domain. This manifests the aforementioned even higher accuracy of this method.
 
@@ -332,6 +355,8 @@ The code for the second example is given below
     print(f"integral value with denser grids: {integral_value2.get()}")
     print(f"relative error: {relative_error.get()}")
 
+    print(integral_value.dtype)
+
 The output of this program is
 
 .. code-block:: none 
@@ -340,6 +365,7 @@ The output of this program is
   length of integral value: 10000
   integral value with denser grids: [0.19354594 0.19361784 0.19368966 ... 0.7395477  0.73961276 0.73967767]
   relative error: [0.00610456 0.00610512 0.00610568 ... 0.00376692 0.00376667 0.00376658]
+  float64
 
 Again, we see an improvement on the accuracy when doubling the grids.
 
@@ -386,6 +412,8 @@ The code for the first example is given below
   print(f"analytical value: {analytical_value.item():.10f}")
   print(f"relative error: {relative_error.item():.10%}")
 
+  print(integral_value.dtype)
+
 The output of the program is 
 
 .. code-block:: none 
@@ -393,6 +421,7 @@ The output of the program is
   integral value: 0.4596976936
   analytical value: 0.4596976941
   relative error: 0.0000001187%
+  float64
 
 In the output, we see a relative error of ~0.00000011% with 20 nodes in the integral domain.  
 
@@ -439,6 +468,8 @@ The code for the second example is given below
   print(f"integral value with denser grids: {integral_value2.get()}")
   print(f"relative error: {relative_error.get()}")
 
+  print(integral_value.dtype)
+
 The output of this program is
 
 .. code-block:: none 
@@ -447,6 +478,7 @@ The output of this program is
   length of integral value: 10000
   integral value with denser grids: [0.19395865 0.19403082 0.19410291 ... 0.7405079  0.7405729  0.7406379 ]
   relative error: [0.00142103 0.00141966 0.00141807 ... 0.00488791 0.00488796 0.00488817]
+  float64
 
 Again, we see an improvement on the accuracy when doubling the grids.
 
@@ -493,6 +525,8 @@ The code for the first example is given below
   print(f"analytical value: {analytical_value.item():.10f}")
   print(f"relative error: {relative_error.item():.10%}")
 
+  print(integral_value.dtype)
+
 The output of the program is 
 
 .. code-block:: none 
@@ -500,6 +534,7 @@ The output of the program is
   integral value: 0.4639013112
   analytical value: 0.4596976941
   relative error: 0.9144307402%
+  float64
 
 For 1000 sampling points here, the relative error ranges from about 0.5% to 5%. More sampling points are expected to lead to a more stable relative error.
 
@@ -545,6 +580,8 @@ The code for the second example is given below
   
   print(f"integral value with denser grids: {integral_value2.get()}")
   print(f"relative error: {relative_error.get()}")
+
+  print(integral_value.dtype)
   
 The output of this program is
 
@@ -553,7 +590,8 @@ The output of this program is
   integral value: [0.19863702 0.19797117 0.19770709 ... 0.76723963 0.73395705 0.80251575]
   length of integral value: 10000
   integral value with denser grids: [0.19366343 0.19144712 0.19564854 ... 0.729802   0.722396   0.73479635]
-  relative error: [0.02503859 0.0329545  0.01041212 ... 0.04879521 0.01575165 0.08438389]
+  relative error: [0.02503859 0.0329545  0.01041212 ... 0.04879521 0.01575165 0.08438389
+  float64
 
 Again, we see an improvement on the accuracy when tenfolding the grids.
 
