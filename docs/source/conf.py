@@ -3,7 +3,7 @@
 # -- Project information
 
 project = 'cupyint'
-copyright = '2025, Ze Ouyang'
+copyright = '2025'
 author = 'Ze Ouyang'
 
 release = '0.1'
