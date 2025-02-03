@@ -3,8 +3,8 @@
 # -- Project information
 
 project = 'cupyint'
-copyright = '2025'
-author = 'Ze Ouyang'
+copyright = '2025 Ze Ouyang & Zijian Yi'
+author = 'Ze Ouyang, Zijian Yi'
 
 release = '0.1'
 version = '0.1.9'
